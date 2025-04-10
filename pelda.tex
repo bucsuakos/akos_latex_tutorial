@@ -1,0 +1,45 @@
+\documentclass{article}% dokumentum fajtája (nem hagyható ki)
+
+\usepackage{showframe}% az oldal részeit látni engedi
+\usepackage{amsmath,mathtools}% matematikai dolgokhoz
+\usepackage{amssymb}% bizonyos matematikai szimbólumohoz
+
+\title{Példa}
+\author{Búcsú Ákos}
+\date{}
+
+\begin{document}
+	\maketitle% a cím megcsinálása
+
+	\section{Másodfokú egyenlet}
+	Egy másodfokú egyenlet általános alakja, ha $a,b,c\in\mathbb{R}$, $a\neq 0$, $x$ pedig valós változó:
+	\begin{equation}
+		ax^2+bx+c=0
+	\end{equation}
+	Ekkor
+	\begin{gather}
+		ax^2+bx+c=0\Big/:a\\
+		%
+		x^2+\frac{b}{a}x+\frac{c}{a}=0\\
+		%
+		\underbrace{\left(x+\frac{b}{2a}\right)^2-
+		\left(\frac{b}{2a}\right)^2+\frac{c}{a}}_{\text{teljes négyzet}}=
+		\left(x+\frac{b}{2a}\right)^2-
+		\left(\frac{b^2-4ac}{4a^2}\right)=0\\
+		%
+		\left(x+\frac{b}{2a}+\sqrt{\frac{b^2-4ac}{4a^2}}\right)
+		\left(x+\frac{b}{2a}-\sqrt{\frac{b^2-4ac}{4a^2}}\right)=0\\
+		%
+		\left(x+\frac{b+\sqrt{b^2-4ac}}{2a}\right)
+		\left(x+\frac{b-\sqrt{b^2-4ac}}{2a}\right)=0
+	\end{gather}
+	Innen
+	\begin{align*}% a csillag számozatlan sorokat eredményez
+		x_1&=\frac{-b+\sqrt{b^2-4ac}}{2a}\\
+		x_2&=\frac{-b-\sqrt{b^2-4ac}}{2a}
+	\end{align*}
+	Egy képletben összefoglalva:
+	\begin{equation*}% a csillag az equation-re is működik
+		x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+	\end{equation*}
+\end{document}

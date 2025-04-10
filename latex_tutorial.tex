@@ -1,0 +1,82 @@
+\documentclass[magyar]{article}
+%
+%%for page layout
+%\usepackage{geometry}
+% \geometry{
+% a4paper,
+% total={170mm,257mm},
+% left=20mm,
+% top=20mm,
+% }
+%
+\input{preamble_latex_tutorial.tex}
+
+\title{Latex Tutorial}
+\author{Búcsú Ákos}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Bevezetés}
+
+Ezt a szöveget kiindulási alapként lehet csak használni, korántsem egész, vagy nagyon részletes kézikönyv. Azt tanácsolom, hogy az internet szorgos forgatásával sajátítsuk el a latexot mégpedig olyan dokumentumok írásával, ami hasznos (tehát jegyzetek, képletgyűjtemények stb.).
+
+Kezdésnek ajánlan tudom az online \href{https://www.overleaf.com/sso-login}{Overleaf-et}, ami lehetővé teszi, hogy a különböző Latex-környezetek telepítése nélkül rövidebb dokumentumokat meg lehessen írni. Tanácsos az ebben a részben levő példakódot bemásolni oda és a kód módosításával kipróbálni (ami sokszor azt jelenti, hogy teljes összecsinálásra késztetni) a különböző funkciókat.
+
+Hasznos linkek még:
+\begin{enumerate}
+	\item \url{https://en.wikibooks.org/wiki/LaTeX}
+	\item \url{https://tikz.dev/}
+	\item \url{https://latex-tutorial.com/}
+\end{enumerate}
+\pagebreak
+
+\section{Példakód}
+
+\lstinputlisting[language=tex,style=latex-dark]{pelda.tex}
+
+\pagebreak
+
+\section{Szövegtörzs}
+A kód lényegi része a \verb|\begin{document}| és a \verb|\end{document}| között van. Az elnevezésből nyilvánvaló, hogy ezek jelzik a dokument elejét és végét, a közöttük levő részt én \textbf{szövegtörzsnek} fogom nevezni.
+
+A szöveg bekezdésekre (paragraphs) tagolódik, ami a \verb|.tex| fájlban egy üres sorral érhető el. Tehát az üres sorok latexban jelenthetnek különbséget. Például a 34. sorban az "Innen" szó előtt azért nincs egy üres sor, hogy az "Innen" ne kerüljön új bekezdésbe. Ilyenkor érdemes egy \verb|%|-jellel helyettesíteni az üres sort, hiszen az utánna levő a kód, (esetünkben az üres sor) fordításakor nem lesz figyelembe véve
+
+A \verb|\maketitle|-t majd a preamble résznél tárgyaljuk.
+
+A \verb|\| azt jelenti, hogy "itt történni fog valami". Alapvetően három különbözőféle eset van:
+\begin{enumerate}
+	\item \verb|\valami|
+	\item \verb|\valami{valami}|
+	\item \verb|\begin{valami1}| ... \verb|\end{valami}|
+\end{enumerate}
+
+Az első eset például a \verb|\section{sectionnév}| ami egy új sectiont kezd, mi a következő sectionig tart. A sectionök számozva vannak és a szám után a sectionnév szerepel. Általánosságban a \verb|\valami| kapcsolóként működik. Ha például egy szövegrészt vastagra akarunk változtatni, akkor ezt a \verb|\bf|-fel lehet megtenni. Azonban ha csak egy szót akarunk vastagon, akkor arra a \verb|\textbf{vastagszó}|-t lehet használni.
+
+Tehát a második esetnél a kapcsos zárójelekkel lehet meghatározni, hogy a \verb\valami\ hol hasson.
+
+A harmadik eset egy környezetet (environment) határoz meg. A környezetben \textit{más szabályok érvényesek}, mint a sima szövegben. Nekünk különösen fontosak a matematikai környezetek, amiknél rögtön van egy kivétel, ez pedig a dollárjel, ami hasonlóan a \verb|\|-hez azt jelzi, hogy valami fog történni, de ennél konkrétabban azt jelzi, hogy valami matematikai dolog fog történni.
+
+	\subsection{Matematikai környezetek}
+	A dollárjel arra való, hogy a sima szövegbe matematikai kifejezéseket tudjunk írni.
+	\lstinputlisting[language=tex,style=latex-dark,linerange={15-15}]{pelda.tex}
+	A többi matematikai környezet mind egy új sorba helyezi a matematikai kifejezéseket, azonban dollárjelek közötti matematikai kifejezések a sima szövegben maradnak. A \verb|\in| (eleme), \verb|\neq| (nem egyenlő, \textbf{n}ot \textbf{e}qual) egy példa rögtön arra, hogy egy környezetben más szabályok érvényesek, mert míg a \verb|\neq| és \verb|\in| \verb|\valami| alakúak, mégsem kapcsolóként viselkednek, hanem matematikai karakterek kódjaként.
+
+	Az \verb|\equation|,\verb|\gather|,\verb|\align| mind olyan matematikai környezetek, ahol nincs szükség dollárjelekre, mert magátó értetődően matematikai kifejezések kerülnek bele, tehát ha sima szöveget szeretnénk írni, akkor azt kell külön jelezni, erre láthatunk példát:
+	\lstinputlisting[language=tex,style=latex-dark,linerange={20-34}]{pelda.tex}
+	A \verb|\gather|-rel több egyenletet lehet egymás alá írni úgy, hogy nem lehet vízszintesen egymáshoz igazítani őket (az \verb|\align|-nál látni fogjuk, hogy hogyan lehet az egyenleteket igazítani). Mondtuk, hogy a matematikai szövegben külön kell jelezni, hogy rendes szöveget akarunk írni, ez látható a fenti kódrészlet 6. sorában, ahol a \verb|\text{rendes szöveg}| jelöli a rendes szöveget a matematikai környezetben.
+
+	Ugyancsak a fenti részletben láthatjuk a \verb|_| és \verb|^| karaktereket, amik az alsó- és a felső indexet jelölik. Ha az indexbe több karaktert szeretnénk írni (a \verb|\|-lel kezdődő karakter is -- noha a kódban több karakter -- egy karakternek számít), ahogy azt láthatjuk az alábbi kódrészletben:
+	\lstinputlisting[language=tex,style=latex-dark,linerange={42-44}]{pelda.tex}
+
+	Most visszatérünk erre kódrészletre:
+	\lstinputlisting[language=tex,style=latex-dark,linerange={20-34}]{pelda.tex}
+	A különböző sorban levő egyenleteket \verb|\\| választja el egymástól, a \verb|%| pedig nem szükséges, csupán az üres sort jelöli (ha tényleges üres sort írnánk, akkor hibát kapnánk, ahogy ezzel szembefutottam a mostani dokumentum írása során).
+
+	A \verb|\Big/|, a \verb|\left(| és a \verb|\right)| különleges karakterek, a \verb|Big| méretet határoz meg, a \verb|\left| és a \verb|\right| pedig a képlet méretéhez alkalmazkodó úgynevezett paired delimitereket (pl. \verb.()[]{}||.).
+
+	A \verb|\frac{számláló}{nevező}| egy kétparaméteres \verb|\|-kifejezés és szép törtet jelöl.
+
+	A \verb|\gather| minden sora egy sorszámot kap, ahogy minden többsoros matematikai környezet (multiline environment).
+\end{document}
