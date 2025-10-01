@@ -45,11 +45,11 @@ A szöveg bekezdésekre (paragraphs) tagolódik, ami a \verb|.tex| fájlban egy 
 
 A \verb|\maketitle|-t majd a preamble résznél tárgyaljuk.
 
-A \verb|\| azt jelenti, hogy "itt történni fog valami". Alapvetően három különbözőféle eset van:
+A \verb|\| azt jelenti, hogy "itt történni fog valami". Alapvetően három különböző eset van:
 \begin{enumerate}
-	\item \verb|\valami|
-	\item \verb|\valami{valami}|
-	\item \verb|\begin{valami1}| ... \verb|\end{valami}|
+	\item \verb|\valami1|
+	\item \verb|\valami2{valami}|
+	\item \verb|\begin{valami3}| ... \verb|\end{valami3}|
 \end{enumerate}
 
 Az első eset például a \verb|\section{sectionnév}| ami egy új sectiont kezd, mi a következő sectionig tart. A sectionök számozva vannak és a szám után a sectionnév szerepel. Általánosságban a \verb|\valami| kapcsolóként működik. Ha például egy szövegrészt vastagra akarunk változtatni, akkor ezt a \verb|\bf|-fel lehet megtenni. Azonban ha csak egy szót akarunk vastagon, akkor arra a \verb|\textbf{vastagszó}|-t lehet használni.
@@ -64,14 +64,14 @@ A harmadik eset egy környezetet (environment) határoz meg. A környezetben \te
 	A többi matematikai környezet mind egy új sorba helyezi a matematikai kifejezéseket, azonban dollárjelek közötti matematikai kifejezések a sima szövegben maradnak. A \verb|\in| (eleme), \verb|\neq| (nem egyenlő, \textbf{n}ot \textbf{e}qual) egy példa rögtön arra, hogy egy környezetben más szabályok érvényesek, mert míg a \verb|\neq| és \verb|\in| \verb|\valami| alakúak, mégsem kapcsolóként viselkednek, hanem matematikai karakterek kódjaként.
 
 	Az \verb|\equation|,\verb|\gather|,\verb|\align| mind olyan matematikai környezetek, ahol nincs szükség dollárjelekre, mert magátó értetődően matematikai kifejezések kerülnek bele, tehát ha sima szöveget szeretnénk írni, akkor azt kell külön jelezni, erre láthatunk példát:
-	\lstinputlisting[language=tex,style=latex-dark,linerange={20-34}]{pelda.tex}
+	\lstinputlisting[language=tex,style=latex-dark,linerange={20-35}]{pelda.tex}
 	A \verb|\gather|-rel több egyenletet lehet egymás alá írni úgy, hogy nem lehet vízszintesen egymáshoz igazítani őket (az \verb|\align|-nál látni fogjuk, hogy hogyan lehet az egyenleteket igazítani). Mondtuk, hogy a matematikai szövegben külön kell jelezni, hogy rendes szöveget akarunk írni, ez látható a fenti kódrészlet 6. sorában, ahol a \verb|\text{rendes szöveg}| jelöli a rendes szöveget a matematikai környezetben.
 
 	Ugyancsak a fenti részletben láthatjuk a \verb|_| és \verb|^| karaktereket, amik az alsó- és a felső indexet jelölik. Ha az indexbe több karaktert szeretnénk írni (a \verb|\|-lel kezdődő karakter is -- noha a kódban több karakter -- egy karakternek számít), ahogy azt láthatjuk az alábbi kódrészletben:
 	\lstinputlisting[language=tex,style=latex-dark,linerange={42-44}]{pelda.tex}
 
 	Most visszatérünk erre kódrészletre:
-	\lstinputlisting[language=tex,style=latex-dark,linerange={20-34}]{pelda.tex}
+	\lstinputlisting[language=tex,style=latex-dark,linerange={20-35}]{pelda.tex}
 	A különböző sorban levő egyenleteket \verb|\\| választja el egymástól, a \verb|%| pedig nem szükséges, csupán az üres sort jelöli (ha tényleges üres sort írnánk, akkor hibát kapnánk, ahogy ezzel szembefutottam a mostani dokumentum írása során).
 
 	A \verb|\Big/|, a \verb|\left(| és a \verb|\right)| különleges karakterek, a \verb|Big| méretet határoz meg, a \verb|\left| és a \verb|\right| pedig a képlet méretéhez alkalmazkodó úgynevezett paired delimitereket (pl. \verb.()[]{}||.).

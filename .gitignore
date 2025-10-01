@@ -5,3 +5,4 @@
 *.out
 *.gz
 preamble_latex_tutorial.tex
+latex_tutorial.tex
